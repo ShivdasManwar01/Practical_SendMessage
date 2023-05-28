@@ -24,19 +24,12 @@ public class MainActivity extends AppCompatActivity {
         sendbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(Intent.ACTION_VIEW);
-//                intent.putExtra("address",new String[]{phone.getText().toString()});
-//                intent.putExtra("message",mess.getText().toString());
-//                intent.setType("vnd.android-dir/mms-sms");
-                try {
-                    SmsManager smsManager=SmsManager.getDefault();
-                    smsManager.sendTextMessage(phone.getText().toString(),null,mess.getText().toString(),null,null);
-                    Toast.makeText(MainActivity.this, "message send succesfully", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.putExtra("address",new String[]{phone.getText().toString()});
+                intent.putExtra("message",mess.getText().toString());
+                intent.setType("vnd.android-dir/mms-sms");
+                startActivity(intent);
 
-                }catch (Exception e){
-                    e.printStackTrace();
-                    Toast.makeText(MainActivity.this, "message could not be sent", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
